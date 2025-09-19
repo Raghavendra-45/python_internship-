@@ -1,0 +1,280 @@
+#  length of the longest palindrome:
+s=input()
+m=0
+for c in range(len(s)):
+    l,r=c,c
+    while l>=0 and r<len(s) and s[l]==s[r]:
+        m=max(m,r-l+1)
+        l-=1
+        r+=1
+    l,r=c,c+1
+    while l>=0 and r<len(s) and s[l]==s[r]:
+        m=max(m,r-l+1)
+        l-=1
+        r+=1
+print(m)
+
+      
+#set limit
+import sys
+sys.setrecursionlimit(2000)
+def qwer(x):
+    print("hi",x)
+    qwer(x+1)
+qwer(1)
+
+      
+# square of a number:
+def sq(x):
+    print(x*x)
+x=int(input())
+sq(x)
+
+# using lambda:
+s=lambda n:n*n
+n=int(input())
+res=s(n)
+print(res)
+
+
+# adding numbers:
+f=lambda a,b:a+b
+n=int(input())
+m=int(input())
+res=f(n,m)
+print(res)
+
+
+# print even numbers using filter with function:
+def even(n):
+    return n%2==0
+nums=[1,2,3,4,5,6,7,8,9]
+evens=list(filter(even,nums))
+print(evens)
+
+
+# print even numbers using filter with lambda without function:
+nums=[1,2,3,4,5,6,7,8,9]
+evens=list(filter(lambda n:n%2==0,nums))
+print(evens)
+
+
+# map with function
+def update(n):
+    return n*2
+nums=[1,2,3,4,5,6,7,8,9]
+evens=list(filter(lambda n:n%2==0,nums))
+doubles=list(map(update,evens))
+print(doubles)
+
+
+# # map without function
+nums=[1,2,3,4,5,6,7,8,9]
+evens=list(filter(lambda n:n%2==0,nums))
+doubles=list(map(lambda n:n*2,evens))
+print(doubles)
+
+
+# adding doubled even numbers: #without function
+from functools import reduce
+nums=[1,2,3,4,5,6,7,8,9]
+evens=list(filter(lambda n:n%2==0,nums))
+doubles=list(map(lambda n:n*2,evens))
+num=reduce(lambda a,b:a+b,doubles)
+print(doubles)
+print(num)
+
+
+#neon using function:
+def neon(num):
+    a=num*num
+    s=0
+    while a>0:
+        d=a%10
+        s+=d
+        a//=10
+    if num==s:
+        print("neon")
+    else:
+        print("not neon")
+neon(9)
+
+
+#perfect number
+def perfect(num):
+    c=0
+    sum=0
+    for i in range(1,num):
+        if num%i==0:
+            sum+=i
+    if num==sum:
+        print("perfect number")
+    else:
+        print("not a perfect")
+perfect(6) 
+
+
+# magic
+def magic(num):
+    while num>9:
+        sum=0
+        while num!=0:
+            d=num%10
+            sum+=d
+            num//=10
+        num=sum
+    if num==1:
+        print("magic")
+    else:
+        print("not a magic")
+magic(146)
+
+
+
+# niven number:
+def niven(num):
+    sum=0
+    while num!=0:
+        d=num%10
+        sum+=d
+        num//=10
+    if num%sum==0:
+        print("niven")
+    else:
+        print("not a niven")
+niven(81) 
+
+
+
+# spy number:
+def spy(num):
+    sum=0
+    mul=1
+    while num!=0:
+        d=num%10
+        sum+=d
+        mul*=d
+        num//=10
+    if sum==mul:
+        print("spy")
+    else:
+        print("not a spy")
+spy(1124)
+
+
+
+# tail recursion n to 1:
+def nums(n):
+    if n==0:
+        return
+    print(n,end=" ")
+    nums(n-1)
+n=int(input())
+nums(n)
+
+
+# # head recursion 1 to n:
+def nums(n):
+    if n==0:
+        return
+    nums(n-1)
+    print(n,end=" ")
+n=int(input())
+nums(n)
+
+
+
+# print 543212345 if input is 5:
+def nums(n):
+    if n==0:
+        return
+    if n==1:
+        print(n,end=" ")
+        return
+    print(n,end=" ")
+    nums(n-1)
+    print(n,end=" ")
+n=int(input())
+nums(n)
+
+
+
+# find factorial of the numbner:
+def fact(n):
+    if n==0 or n==1:
+        return 1
+    else:
+        return n*fact(n-1)
+num=int(input())
+print(fact(num))
+
+
+
+# reverse a integer using recursion:
+def reverse(n,rev=0):
+    if n==0:
+        return rev
+    return reverse(n//10,rev*10+n%10)
+num=int(input())
+print(reverse(num))
+
+
+
+# check the given integer is palindrome:
+def is_palindrome(n,rev=0,temp=None):
+    if temp is None:
+        temp=n
+    if n==0:
+        return temp==rev
+    return is_palindrome(n//10,rev*10+n%10,temp)
+num=int(input())
+print(is_palindrome(num))
+
+
+
+# check given input is perfect square or not:
+def is_square(n, i=1):
+    if i * i == n:
+        return True
+    if i * i > n:
+        return False
+    return is_square(n, i + 1)
+num = int(input("Enter a number: "))
+print("Perfect square" if is_square(num) else "Not a perfect square")
+
+
+
+# find power of two number , if a,b is input then find a power b:
+def power(a,b):
+    if b==0:
+        return 1 
+    else:
+        return a*power(a,b-1)
+a=int(input())
+b=int(input())
+print(power(a,b))
+
+
+
+# check given number is power of 2:
+def is_power_of_two(n):
+    if n == 1:
+        return True
+    if n == 0 or n % 2 != 0:
+        return False
+    return is_power_of_two(n // 2)
+num = int(input("Enter a number: "))
+print(is_power_of_two(num))
+
+
+
+# reduce the number to 1 :geeksforgeeks
+def countways(n):
+    if (n == 1):
+        return 0
+    elif (n % 2 == 0):
+        return 1 + countways(n / 2)
+    else:
+        return 1 + min(countways(n - 1), countways(n + 1))
+n = int(input())
+print(countways(n))
