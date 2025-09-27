@@ -1,0 +1,76 @@
+# bingo online lottery game:
+num=[-10,-7,-3,4,2]
+num.sort()
+prod1=num[-1]*num[-2]
+prod2=num[0]*num[1]
+if prod1>prod2:
+    print(num[-1]+num[-2])
+print(num[0]+num[1])
+
+
+
+# digital secure data transfer solutions:
+s1="abcdefghijklmnopqrstuvwxyz"
+s2='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+ch=input()
+n=int(input())
+if ch.islower():
+    idx=s1.index(ch)
+    idx=idx+n
+    b=idx%26
+    print(s1[b])
+else:
+    idx=s2.index(ch)
+    idx=idx+n
+    b=idx%26
+    print(s2[b])
+
+
+
+# pooled cab service:
+a,b=30,50
+l=[29,38,12,48,39,55]
+for i in l:
+    if a<=i and b>=i:
+        print(i,end=" ")
+
+
+
+# kth shortest processing queue:
+n,a=7,5
+l=[9 ,-3, 8, -6, -7, 18, 10]
+l.sort()
+print(l[a-1])
+print(l)
+
+
+
+# graph(bfs,dfs):
+from collections import defaultdict
+edges=[['A','B'],['B','D'],['A','C'],['C','E'],['E','F']]
+adj_list=defaultdict(list)
+for u,v in edges:
+    adj_list[u].append(v)
+    adj_list[v].append(v)
+print(adj_list)
+# bfs traversal
+def BFS(graph,start):
+    visited=set()
+    q=[start]
+    while q:
+        n=q.pop(0)
+        if n not in visited:
+            print(n,end=" ")
+            visited.add(n)
+            q.extend(graph[n])
+# dfs traversal:
+def dfs(graph,n,visited=set()):
+    if n not in visited:
+        print(n,end=" ")
+        visited.add(n)
+        for i in graph[n]:
+            dfs(graph,i,visited)
+graph={'A':['B','C'],'B':['A','D','E'],'C':['A','F'],'D':['B'],'E':['B','F'],'F':['C','E']}
+BFS(graph,'A')
+print()
+dfs(graph,'A')
